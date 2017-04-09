@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About Me
-permalink: /about/
+permalink: /
 ---
 
 **Jekyll을 이용하여 만든 블로그 입니다.**
