@@ -26,9 +26,9 @@ You can fork taken from [here.](https://github.com/vfalanis/taken)
 
 3. 현 직장 : STunitas
 
-4. 개인 관심사 : FIFA online3, Linux, Docker, AWS, 가상화 시스템, devops engineer
+4. 개인 관심사 : FIFA online3, Linux, **Docker**, AWS, **가상화 시스템**, devops engineer
 
-5. 보유 기술 :
+5. 보유 기술 : Shell Script, Linux, docker, Lighttp, mysql, git 형상관리 
 
 6. 하고 싶은 일 :*
 
