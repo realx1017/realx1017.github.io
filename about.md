@@ -14,7 +14,10 @@ Taken is based on [chapter tumblr theme.](http://theme-chapter.tumblr.com/)
 
 You can fork taken from [here.](https://github.com/vfalanis/taken)
 
+
 ---
+![devops]({{http://realx1017.github.io}}/devops.png)
+
 1. 이름 : 
 
 2. 생년월일 :
