@@ -25,6 +25,7 @@ You can fork taken from [here.](https://github.com/vfalanis/taken)
 3. 현 직장 :
 
 4. 개인 관심사 :
+![devops](http://realx1017.github.io/devops.png)
 
 5. 보유 기술 :
 
