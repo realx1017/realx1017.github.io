@@ -22,7 +22,7 @@ Reference : my brain & internet
 
 #. git show commitid <- commit 로 파일의 변경 내용 확인
  
-**git 복구하기**
 ---
 
+**git 복구하기**
 
