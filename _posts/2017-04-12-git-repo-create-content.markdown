@@ -12,6 +12,7 @@ Reference : my brain & internet
 ---
 
 **Git Repo Create <- remote repo 에서 작업 해야 할 것들**
+
 #. mkdir /root/repo.git
 
 #. git --bare init
