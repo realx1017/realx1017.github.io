@@ -89,6 +89,7 @@ reset 후 다시 reset으로 최신으로 돌아오는 이유는 커밋 이력�
 Git을 사용하다보면 수정한 내용을 되돌리고 싶을 경우가 간혹있다. GUI가 있는 Git 클라이언트의 경우엔 discard를 하면 되지만 command line interface에서는 어떻게 해야 할지 잘 모를때가 많다. 각 상황별로 수정 내역을 되돌리는 법을 알아보자.
 
 **git add 명령을 하기 이전(stage에 올리지 않은 경우**
+
 1.1 repository 내 모든 수정 되돌리기
 
      $ cd {repository_root_dir}
