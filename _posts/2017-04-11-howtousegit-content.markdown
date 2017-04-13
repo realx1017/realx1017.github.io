@@ -125,11 +125,11 @@ master 브랜치의 마지막 커밋을 가리키던 HEAD를 그 이전으로 �
 
      $ git reset --soft HEAD^
 
-4. 모든 untracked 파일들을 지우기
+4 모든 untracked 파일들을 지우기
 
      $ git clean -fdx
 
-5. git push를 한 경우 remote repository도 이전으로 되돌리기
+5 git push를 한 경우 remote repository도 이전으로 되돌리기
 
      $ git reset HEAD^  #local repository에서 commit을 하나 되돌림. ^^는 2개 되돌림.
 
