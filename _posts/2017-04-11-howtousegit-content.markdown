@@ -166,23 +166,23 @@ C. git reset --hard HEAD^
 
 **(생각없이) 깔끔하게 복구하는 법**
 
-1. 복구를 원하는 브랜치로 checkout
+1 복구를 원하는 브랜치로 checkout
 
      $ git checkout <브랜치명>
 
-2. git log로 원하는 commit의 좌표확인
+2 git log로 원하는 commit의 좌표확인
 
      $ git log
 
-3. 내가 원하는 commit값은 3번 뒤로 가야한다면?
+3 내가 원하는 commit값은 3번 뒤로 가야한다면?
 
      $ git reset --hard HEAD^^^ ( {^} 한개당 한번뒤로다)
 
-4. 다시 git log로 commit 상태확인
+4 다시 git log로 commit 상태확인
 
-5. git push origin --force 로 밀어넣기
+5 git push origin --force 로 밀어넣기
 
-6. 복구완료!
+6 복구완료!
 
 **특정 원하는 commit 하나만 삭제하고 싶을 때**
 
