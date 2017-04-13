@@ -131,8 +131,71 @@ master 브랜치의 마지막 커밋을 가리키던 HEAD를 그 이전으로 �
 
 5. git push를 한 경우 remote repository도 이전으로 되돌리기
 
-     $ git reset HEAD^  #local repository에서 commit을 하나 되돌림
+     $ git reset HEAD^  #local repository에서 commit을 하나 되돌림. ^^는 2개 되돌림.
 
      $ git commit -m "..."  #되돌린 것으로 commit
 
      $ git push origin +master #remote repository를 강제로 revert
+
+---
+
+**실수를 복구하고 싶을 때**
+
+     $ git reset --soft HEAD^ 
+
+HEAD : 현재바라보는 directory
+
+^ : 바로 전 ^^^ 하면 3번전
+
+--soft : commit 내용이 staging으로 옮겨진다
+
+즉 커밋은 취소되고 파일은 삭제되지 않고 stage로 넘어간다
+
+B. commit에 추가내역을 넣고 싶을때
+
+작업중 실수로 빠진 내역이나, 소소한 내역을 기존 commit에 추가할 때
+
+     $ git commit --amend -m "something u say"
+
+     --amend : 가장 최신의 commit에 내용 추가하기
+
+C. git reset --hard HEAD^
+
+     --hard : commit한 내용이 stage로 가는게 아니라 아예 삭제된다 
+
+
+**(생각없이) 깔끔하게 복구하는 법**
+
+1. 복구를 원하는 브랜치로 checkout
+
+     $ git checkout <브랜치명>
+
+2. git log로 원하는 commit의 좌표확인
+
+     $ git log
+
+3. 내가 원하는 commit값은 3번 뒤로 가야한다면?
+
+     $ git reset --hard HEAD^^^ ( {^} 한개당 한번뒤로다)
+
+4. 다시 git log로 commit 상태확인
+
+5. git push origin --force 로 밀어넣기
+
+6. 복구완료!
+
+**특정 원하는 commit 하나만 삭제하고 싶을 때**
+
+-- revert
+
+git revert { Commit ID}
+
+이 명령을 실행하면 Commit 명령을 실행했을 때와 마찬가지로 로그를 입력하는 에디터가 나타납니다.
+
+Revert작업은 결과적으로 보면 대상 Commit의 작업내용과 정 반대되는 작업의 새로운 Commit을 작성하는 것과 같으며, 개발자가 삭제할 Commit의 수정 사항을 일일이 반대로 편집하여 다시 Commit하는 수고를 덜어주기 위한 일종의 Commit매크로와 같습니다.
+
+각각의 Commit은 소스코드의 상태를 저장하고 있는 것이 아니라, 이전 Commit과 비교한 변경 사항에 대한 정보를 담고 있습니다. Commit에 대한 Patch를 떠서 그 파일 내부를 열어 보면 이게 무슨 말인지 잘 이해할 수 있습니다.
+
+이와 같은 Commit의 특성이 Revert명령을 가능하게 하는 것입니다.
+
+[출처] Git merge 되돌리기 , Push 되돌리기|작성자 까망이
