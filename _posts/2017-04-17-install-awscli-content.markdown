@@ -10,7 +10,7 @@ Reference : my brain & internet
 
 
 ---
-	[root@cjyland ~]# yum -y install pip
+	**[root@cjyland ~]# yum -y install pip**
 	Loaded plugins: fastestmirror, langpacks
 	Repodata is over 2 weeks old. Install yum-cron? Or run: yum makecache fast
 	base                                                     | 3.6 kB     00:00
