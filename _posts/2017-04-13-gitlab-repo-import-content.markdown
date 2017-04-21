@@ -13,5 +13,7 @@ Reference : my brain & internet
 
 **Git Repo Import**
 
+![git_import]({{http://realx1017.github.io}}/git_import.png)
+
 ---
 
