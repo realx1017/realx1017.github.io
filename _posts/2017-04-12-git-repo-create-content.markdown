@@ -35,12 +35,13 @@ Reference : my brain & internet
 
 원격 서버의 주소를 git에게 알려줘야 해요.
 
-     git remote add origin <원격 서버 주소>
+     #. git remote add origin <원격 서버 주소>
 
 이제 변경 내용을 원격 서버로 발행할 수 있어요.
 
 변경하기
-     git remote set-url origin <원격 서버 주소>
+
+     #. git remote set-url origin <원격 서버 주소>
 ---
 
 ** git merge**
