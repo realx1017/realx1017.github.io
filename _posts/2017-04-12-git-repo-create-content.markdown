@@ -13,38 +13,34 @@ Reference : my brain & internet
 
 **Git Repo Create <- remote repo 에서 작업 해야 할 것들**
 
-#. mkdir /root/repo.git
-
-#. git --bare init
-
-#. cd /tmp
-
-#. git clone root/repo.git
-
-#. touch file
-
-#. git add file
-
-#. git commit -m 'comment'
-
-#. git push origin master
+     #. mkdir /root/repo.git
+     #. git --bare init
+     #. cd /tmp
+     #. git clone root/repo.git
+     #. touch file
+     #. git add file
+     #. git commit -m 'comment'
+     #. git push origin master
 
 
 ---
 **clone 받을 컴퓨터에서 작업해야 할 것들**
 
-#. git clone ssh://ip:[port]/[path]
+     #. git clone ssh://ip:[port]/[path]
 
 ---
-**git remote add 추가 작업**
+**git remote add 추가 작업 및 변경작업**
 
 만약 기존에 있던 원격 저장소를 복제한 것이 아니라면,
 
 원격 서버의 주소를 git에게 알려줘야 해요.
 
-git remote add origin <원격 서버 주소>
+     git remote add origin <원격 서버 주소>
 
 이제 변경 내용을 원격 서버로 발행할 수 있어요.
+
+변경하기
+     git remote set-url origin <원격 서버 주소>
 ---
 
 ** git merge**
