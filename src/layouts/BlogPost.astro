@@ -23,13 +23,11 @@ const displayDate = pubDate || date || new Date();
 		<main class="max-w-4xl mx-auto px-4 md:px-8 py-12 md:py-20 w-full flex-grow">
 			<article class="glass rounded-3xl overflow-hidden shadow-2xl">
 				
-				<!-- Hero Image if exists -->
 				{heroImage ? (
 					<div class="w-full max-h-[400px] overflow-hidden border-b border-slate-900">
 						<Image width={1020} height={510} src={heroImage} alt="" class="w-full object-cover" />
 					</div>
 				) : (
-					<!-- Default subtle gradient header if no hero image -->
 					<div class="w-full h-12 bg-gradient-to-r from-indigo-950/40 via-purple-950/20 to-slate-950/40 border-b border-slate-900/60"></div>
 				)}
 				
