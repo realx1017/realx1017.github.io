@@ -1,0 +1,23 @@
+{
+  "name": "realx1017.github.io",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^7.0.0",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@tailwindcss/vite": "^4.3.2",
+    "astro": "^7.0.4",
+    "sharp": "^0.35.0",
+    "tailwindcss": "^4.3.2"
+  }
+}

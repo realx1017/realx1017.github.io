@@ -1,0 +1,18 @@
+---
+const today = new Date();
+---
+
+<footer class="mt-auto border-t border-slate-900 bg-slate-950/40 py-8 text-center text-slate-500 text-sm">
+	<div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+		<div>
+			&copy; {today.getFullYear()} Jeongyeol Cho. All rights reserved.
+		</div>
+		<div class="flex items-center gap-4">
+			<a href="https://github.com/realx1017" target="_blank" class="hover:text-slate-300 transition-colors" aria-label="GitHub">
+				GitHub
+			</a>
+			<span class="text-slate-800">•</span>
+			<span class="text-xs text-slate-600">Built with Astro & Tailwind</span>
+		</div>
+	</div>
+</footer>

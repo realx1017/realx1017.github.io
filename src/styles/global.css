@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f5f7fa;
+  --color-primary-100: #e4e9f0;
+  --color-primary-200: #cbd5e1;
+  --color-primary-800: #1e293b;
+  --color-primary-900: #0f172a;
+  --color-primary-950: #020617;
+  
+  --color-accent-blue: #3b82f6;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-indigo: #6366f1;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  
+  body {
+    @apply bg-primary-950 text-slate-200 antialiased selection:bg-purple-500/30 selection:text-purple-200 min-h-screen flex flex-col;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-primary-950;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-800 rounded-full hover:bg-slate-700 transition-colors;
+  }
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
+}
+
+/* Typography styles for article rendering */
+.prose {
+  @apply max-w-none text-slate-300 leading-relaxed;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  @apply text-white font-bold tracking-tight mt-8 mb-4;
+}
+
+.prose h1 { @apply text-3xl md:text-4xl; }
+.prose h2 { @apply text-2xl md:text-3xl border-b border-slate-800/60 pb-2; }
+.prose h3 { @apply text-xl md:text-2xl; }
+
+.prose p {
+  @apply mb-6 text-base md:text-lg;
+}
+
+.prose a {
+  @apply text-indigo-400 hover:text-indigo-300 underline underline-offset-4 decoration-indigo-400/40 hover:decoration-indigo-300 transition-all;
+}
+
+.prose code {
+  @apply bg-slate-800/80 text-purple-300 px-1.5 py-0.5 rounded text-sm font-mono border border-slate-700/30;
+}
+
+.prose pre {
+  @apply bg-slate-900 border border-slate-800 rounded-xl p-4 md:p-6 my-6 overflow-x-auto shadow-2xl;
+}
+
+.prose pre code {
+  @apply bg-transparent text-slate-200 border-none p-0 text-sm;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-indigo-500 bg-indigo-950/20 px-6 py-4 my-6 rounded-r-xl text-slate-300 italic;
+}
+
+.prose ul, .prose ol {
+  @apply my-6 pl-6 list-outside;
+}
+
+.prose ul { @apply list-disc; }
+.prose ol { @apply list-decimal; }
+
+.prose li {
+  @apply mb-2 pl-1;
+}
+
+.prose hr {
+  @apply border-slate-800/80 my-10;
+}

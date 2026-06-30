@@ -1,0 +1,181 @@
+---
+import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
+import Layout from '../layouts/BlogPost.astro';
+---
+
+<Layout
+	title="About Me & Career"
+	description="DevOps 및 Cloud 인프라 엔지니어 조정열의 상세 경력 기술서입니다."
+	pubDate={new Date('June 30 2026')}
+	heroImage={AboutHeroImage}
+>
+	<div class="space-y-12">
+		
+		<!-- Introduction -->
+		<div class="prose text-slate-300">
+			<p>
+				안녕하세요. 18년 이상의 경력을 가진 시니어 <strong>HPC (High Performance Computing) 및 DevOps/Cloud 인프라 엔지니어</strong> 조정열입니다. 
+				가상화 시스템 엔지니어로 커리어를 시작해 대규모 HPC 클러스터 인프라를 설계·구축했으며, 
+				현재는 AWS 클라우드 생태계에서 서버리스 아키텍처 도입, IaC(Terraform) 기반의 인프라 자동화, Kubernetes(EKS) 마이그레이션 및 CI/CD 파이프라인 고도화를 주도하고 있습니다.
+			</p>
+		</div>
+
+		<!-- Certifications -->
+		<div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800/40">
+			<h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+				🏅 자격증 및 Skill
+			</h2>
+			<div class="flex flex-wrap gap-2.5">
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/15 text-xs font-bold">CKA (Kubernetes Administrator)</span>
+				<span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/15 text-xs font-bold">CKAD (Kubernetes Application Developer)</span>
+				<span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/15 text-xs font-bold">리눅스마스터 1급</span>
+				<span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/15 text-xs font-bold">네트워크관리사 2급</span>
+			</div>
+		</div>
+
+		<!-- Career Timeline -->
+		<div class="space-y-10">
+			<h2 class="text-2xl font-bold text-white border-b border-slate-800/60 pb-3">Work Experience</h2>
+
+			<!-- 1. 홈플러스 -->
+			<div class="relative pl-6 border-l-2 border-indigo-500/30 space-y-4">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500"></div>
+				<div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+					<h3 class="text-xl font-bold text-white">홈플러스</h3>
+					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-indigo-400">2022.04 - 재직중</span>
+				</div>
+				<p class="text-sm text-slate-400">시니어 DevOps 엔지니어 (정규직)</p>
+				
+				<div class="space-y-4 pt-2">
+					<!-- Project 1 -->
+					<div class="glass p-5 rounded-xl space-y-2">
+						<h4 class="text-base font-bold text-white">서버리스 온콜(On-Call) 알림 시스템 구축 & 비용 최적화</h4>
+						<p class="text-xs text-slate-400">AWS SNS, SQS, Connect, DynamoDB, Lambda, SES</p>
+						<ul class="list-disc pl-4 text-xs text-slate-300 space-y-1">
+							<li>AWS 인프라 장애 시 자동 전화(Voice) 및 SMS 이중 발송 아키텍처 설계</li>
+							<li>API Rate Limit 제어를 위해 SQS 버퍼링 및 Lambda Reserved Concurrency(동시성 제어) 적용</li>
+							<li>장애 알림 발송 안정성 대폭 개선 및 운영 비용 절감 효과 확보</li>
+						</ul>
+					</div>
+
+					<!-- Project 2 -->
+					<div class="glass p-5 rounded-xl space-y-2">
+						<h4 class="text-base font-bold text-white">ElasticSearch Coordinator Node EC2 ➡️ ECS Fargate 전환</h4>
+						<p class="text-xs text-slate-400">AWS ECS Fargate, ECR, Auto Scaling, CloudWatch</p>
+						<ul class="list-disc pl-4 text-xs text-slate-300 space-y-1">
+							<li>기존 EC2 기반의 ES Coordinator 노드를 완전 컨테이너화하여 ECS Fargate로 이관</li>
+							<li>트래픽 패턴 기반 Auto Scaling 정책 적용으로 인프라 관리 효율성 극대화</li>
+							<li><strong>연간 약 1억 원</strong> 규모의 인프라 오버헤드 및 운영 비용 절감 달성</li>
+						</ul>
+					</div>
+
+					<!-- Project 3 -->
+					<div class="glass p-5 rounded-xl space-y-2">
+						<h4 class="text-base font-bold text-white">AWS Database(Aurora RDS) 오토스케일링 & 자동 백업 파이프라인</h4>
+						<p class="text-xs text-slate-400">Lambda, EventBridge, RDS, S3, Slack Webhook</p>
+						<ul class="list-disc pl-4 text-xs text-slate-300 space-y-1">
+							<li>이벤트/트래픽 급증 구간 맞춤형 Aurora MySQL Autoscaling 정책 구현</li>
+							<li>매일 생성되는 RDS 스냅샷 데이터를 S3에 자동으로 백업하는 스케줄러 구성</li>
+							<li>EventBridge 이벤트를 캡처하여 데이터 백업 실패 시 Slack 알림 연동 및 대응 체계 마련</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- 2. 브랜디 -->
+			<div class="relative pl-6 border-l-2 border-slate-800 space-y-4">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
+				<div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+					<h3 class="text-xl font-bold text-white">브랜디 (Brandi)</h3>
+					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400">2020.05 - 2022.03</span>
+				</div>
+				<p class="text-sm text-slate-400">클라우드 인프라 엔지니어 (정규직)</p>
+				
+				<div class="space-y-4 pt-2">
+					<div class="glass p-5 rounded-xl space-y-2">
+						<h4 class="text-base font-bold text-white">VPC 네트워크 및 CI/CD 파이프라인 IaC 자동화</h4>
+						<p class="text-xs text-slate-400">Terraform, CodePipeline, CodeBuild, VPC</p>
+						<ul class="list-disc pl-4 text-xs text-slate-300 space-y-1">
+							<li>반복 수작업이 잦았던 VPC Subnet, NAT Gateway 등 핵심 네트워크 구조의 Terraform 모듈화</li>
+							<li>AWS CodePipeline 및 CodeBuild 인프라 구성을 IaC 코드로 완전 규격화</li>
+							<li>배포 일관성 확보, 개발팀 빌드 속도 개선 및 인적 배포 오류(Human Error) 최소화</li>
+						</ul>
+					</div>
+
+					<div class="glass p-5 rounded-xl space-y-2">
+						<h4 class="text-base font-bold text-white">EC2 기반 WAS 애플리케이션 EKS 마이그레이션</h4>
+						<p class="text-xs text-slate-400">Amazon EKS, Kubernetes, Prometheus, Grafana, HPA</p>
+						<ul class="list-disc pl-4 text-xs text-slate-300 space-y-1">
+							<li>기존 가상 서버(EC2) 기반 서비스를 Kubernetes(EKS) 관리형 컨테이너 환경으로 이관</li>
+							<li>HPA(Horizontal Pod Autoscaler) 구성을 통해 서비스 가동성 및 안정적인 트래픽 대응 설계</li>
+							<li>Prometheus & Grafana 통합 모니터링 시스템을 구축하여 메트릭 수집 및 가시성 확보</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- 3. 에스티유니타스 -->
+			<div class="relative pl-6 border-l-2 border-slate-800 space-y-4">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
+				<div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+					<h3 class="text-xl font-bold text-white">에스티유니타스 (ST Unitas)</h3>
+					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400">2015.11 - 2020.04</span>
+				</div>
+				<p class="text-sm text-slate-400">인프라 시스템 엔지니어 (정규직)</p>
+				
+				<div class="space-y-4 pt-2">
+					<div class="glass p-5 rounded-xl space-y-2">
+						<h4 class="text-base font-bold text-white">ELK Stack 기반 중앙 집중식 로그 분석 시스템 구축</h4>
+						<p class="text-xs text-slate-400">Elasticsearch, Logstash, Kibana, Filebeat, Metricbeat</p>
+						<ul class="list-disc pl-4 text-xs text-slate-300 space-y-1">
+							<li>k8s 클러스터 내부의 컨테이너 로그 및 AWS ELB access log 적재 파이프라인 설계</li>
+							<li>Kibana 대시보드를 연동하여 HTTP 상태 코드, 리전 정보, 시스템 메트릭 실시간 대시보드 시각화</li>
+							<li>RDS Slow Query 로그 분석 및 일일 슬로우 쿼리 리포팅 자동화 구축</li>
+						</ul>
+					</div>
+
+					<div class="glass p-5 rounded-xl space-y-2">
+						<h4 class="text-base font-bold text-white">AWS 기반 Kubernetes(kops) 클러스터 및 배포 자동화</h4>
+						<p class="text-xs text-slate-400">kops, Kubernetes, GitLab CI, Docker, Nagios, Grafana</p>
+						<ul class="list-disc pl-4 text-xs text-slate-300 space-y-1">
+							<li>kops를 사용해 안정적인 클라우드 기반 가상 컨테이너 오케스트레이션 환경 구축</li>
+							<li>GitLab CI와 Docker, Docker Compose를 연동한 다단계(DEV/QA/Staging/Prod) 배포 환경 구축</li>
+							<li>Nagios 모니터링 시스템 구축 및 임계치 초과 시 Jenkins API 트리거를 통한 프로세스 자동 복구 연동</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- 4. 클루닉스 -->
+			<div class="relative pl-6 border-l-2 border-slate-800 space-y-4">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
+				<div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+					<h3 class="text-xl font-bold text-white">클루닉스</h3>
+					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400">2011.03 - 2015.04</span>
+				</div>
+				<p class="text-sm text-slate-400">HPC 클러스터 엔지니어 (정규직)</p>
+				
+				<div class="space-y-4 pt-2">
+					<div class="glass p-5 rounded-xl space-y-2">
+						<h4 class="text-base font-bold text-white">대규모 국방 및 대기업 연구원 전용 HPC/HA 클러스터 구축</h4>
+						<p class="text-xs text-slate-400">HPC Cluster, Parallel File System, OpenXEN, GPU Passthrough</p>
+						<ul class="list-disc pl-4 text-xs text-slate-300 space-y-1">
+							<li>국방과학연구소 대규모 HPC 및 고가용성(HA) 클러스터 설계 (300여 명 규모, 병렬파일시스템 설계)</li>
+							<li>KIOST 및 LG Display R&D 부서 대상 GPU Passthrough 가상화 데스크탑 시스템 아키텍처 설계</li>
+							<li>한국타이어 고성능 병렬 컴퓨팅 구축 (Abaqus 중앙 HPC 클러스터 통합 설계)</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- 이전 경력 생략 요약 -->
+			<div class="relative pl-6 border-l-2 border-slate-800 space-y-2 text-xs text-slate-500">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-800"></div>
+				<p>• <strong>서울대학교 약학대학 연구실 (2008.10 - 2010.05)</strong>: Squid Proxy server 구축 및 Samba 네트워크 디스크 구성 기술지원</p>
+				<p>• <strong>아이키스텍 (2006.10 - 2008.09)</strong>: 고등과학원, 배재대, 인하대 등 다수 대학 및 연구기관 HPC 리눅스 클러스터 인프라 튜닝 및 하드웨어 유지보수</p>
+			</div>
+
+		</div>
+
+	</div>
+</Layout>

@@ -1,35 +1,63 @@
-# taken
+# Astro Starter Kit: Blog
 
-Taken is a minimalist two-column jekyll theme based on chapter tumblr theme 
+```sh
+npm create astro@latest -- --template blog
+```
 
-![Taken](https://github.com/vfalanis/taken/blob/master/Taken.png)
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## Updates
+Features:
 
-Note: There's a stable branch (v1.0) which includes the default taken theme.
-Master and gh-pages branch now include the latest changes:
+- ✅ Minimal styling (make it your own!)
+- ✅ 100/100 Lighthouse performance
+- ✅ SEO-friendly with canonical URLs and Open Graph data
+- ✅ Sitemap support
+- ✅ RSS Feed support
+- ✅ Markdown & MDX support
 
-* Better responsive support ( sidebar collapse)
-* Fade in animations
+## 🚀 Project Structure
 
+Inside of your Astro project, you'll see the following folders and files:
 
-## Features
-* Flickr feed
-* Disqus
-* more ...
+```text
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── content/
+│   ├── layouts/
+│   └── pages/
+├── astro.config.mjs
+├── README.md
+├── package.json
+└── tsconfig.json
+```
 
-## Demo
-You can see a live demo of "taken" [here](http://vfalanis.github.io/taken)
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-## Instructions
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-1. Fork this repository
-2. Clone the repository to your computer.<br />`git clone https://github.com/YOURUSERNAME/taken.git` 
-3. Run it.<br />`jekyll serve`
-4. Go to http://127.0.0.1:4000.
+The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
 
-## To do list:
-* Categories support
-* Add portfolio section
-* Flickr plugin animation and configuration
-* More...
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Credit
+
+This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
