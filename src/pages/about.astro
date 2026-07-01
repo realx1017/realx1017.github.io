@@ -67,18 +67,19 @@ import Layout from '../layouts/BlogPost.astro';
 						<h4 class="text-lg font-bold text-white">서버리스 아키텍처 기반의 온콜 알림 시스템 구축 및 비용 최적화</h4>
 						<div class="text-xs text-slate-400">AWS SNS, SQS, Amazon Connect, DynamoDB, Lambda, SES</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> Amazon SNS, SQS, Connect, DynamoDB 등의 managed 서비스와 Amazon Connect를 활용한 완전 서버리스 온콜 시스템을 구축하여 운영 비용을 절감하고, 대규모 발신 안정성 및 유연한 장애 알림을 구현.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> Amazon SNS, SQS, Amazon Connect, DynamoDB 등의 managed 서비스와 Amazon Connect를 활용한 완전 서버리스 온콜 시스템을 구축하여 운영 비용을 절감하고, 대규모 발신 안정성 및 유연한 장애 알림을 구현.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
 								<li>Amazon SES, SNS, SQS, Lambda 기반의 완전 서버리스 알림 파이프라인 아키텍처 설계 및 구축.</li>
 								<li>Amazon Connect API 호출 제한(Rate Limit) 문제 해결을 위해 SQS 버퍼링 및 Lambda 동시성 제어(Reserved Concurrency) 적용.</li>
 								<li>AWS DynamoDB를 활용하여 장애 알림 대상자(전화번호) 관리 로직 설계 및 구현.</li>
-								<li>Amazon SNS를 통한 전화(Voice) 및 SMS(Text) 이중 발송 시스템 구축.</li>
+								<li>Amazon SNS를 통한 전화(Voice) 발송 시스템 구축.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
 								<li>시스템 확장성, 가용성, 유지보수 용이성 대폭 향상.</li>
-								<li>DynamoDB 기반 유연한 전화번호 관리 시스템 구현 및 대규모 트래픽 발생 시에도 안정적인 장애 알림 발송 환경 확보.</li>
+								<li>DynamoDB 기반 유연한 전화번호 관리 시스템 구현.</li>
+								<li>대규모 트래픽 발생 시에도 안정적인 장애 알림 발송.</li>
 							</ul>
 						</div>
 					</div>
@@ -97,57 +98,40 @@ import Layout from '../layouts/BlogPost.astro';
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>연간 약 1억 원의 인프라 비용 절감 달성.</li>
-								<li>트래픽 증가 시 자동 확장을 통한 유연한 대응 및 서비스 안정성 향상, EC2 관리 오버헤드 감소 및 운영 효율성 증대.</li>
+								<li>연간 약 1억 원의 인프라 비용 절감 예상.</li>
+								<li>트래픽 증가 시 자동 확장(Auto Scaling)을 통한 유연한 대응 및 서비스 안정성 향상.</li>
+								<li>EC2 관리 오버헤드 감소 및 운영 효율성 증대.</li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Project 3 -->
 					<div class="glass p-6 rounded-2xl space-y-4">
-						<h4 class="text-lg font-bold text-white">RDS snapshot to S3 자동 백업 파이프라인 구축</h4>
-						<div class="text-xs text-slate-400">AWS Lambda, EventBridge, RDS, S3, Slack Webhook</div>
+						<h4 class="text-lg font-bold text-white">ECS Fargate, Aurora mysql RDS Autoscaling 적용</h4>
+						<div class="text-xs text-slate-400">ECS Fargate, Aurora MySQL, EventBridge, Auto Scaling</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 매일 생성되는 RDS 스냅샷을 사용하여 S3에 데이터를 저장하는 자동화된 작업을 구성하고, EventBridge를 이용하여 RDS 이벤트 카테고리의 ID 값을 받아 export 실패 시 Slack으로 알림을 받을 수 있도록 구성. 클라우드 인프라 관리의 가용성과 안정성 보장 및 비즈니스 연속성 유지.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 이벤트와 트래픽이 많은 시간대에는 Scaling out을 적용하고, 그 외 시간대에는 Scaling in을 적용하여 ECS Fargate 컨테이너의 리소스를 최적화하여 비용을 절감.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
-								<li>AWS Lambda 및 EventBridge를 활용하여 RDS 스냅샷을 S3에 자동 백업하는 시스템 구축.</li>
-								<li>RDS 이벤트 기반 스냅샷 export 실패 알림 (Slack) 기능 구현.</li>
+								<li>ECS Fargate 서비스 및 Aurora MySQL RDS 인스턴스에 대한 오토스케일링 정책 구현.</li>
+								<li>EventBridge를 활용하여 특정 시간대 또는 이벤트 기반으로 스케일링 트리거 설정.</li>
+								<li>Scale-out/in 로직 개발 및 테스트.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>RDS 데이터 백업 자동화 및 안정성 확보로 재해 복구 능력 향상.</li>
-								<li>스냅샷 export 실패에 대한 빠른 감지 및 대응 체계 구축을 통한 인프라 운영의 안정성 보장.</li>
+								<li>트래픽 패턴에 따른 컴퓨팅 및 DB 리소스 최적화로 비용 절감.</li>
+								<li>서비스 가용성 및 성능 향상 (부하 시 빠른 확장, 유휴 시 리소스 절감).</li>
+								<li>운영 자동화 및 관리 오버헤드 감소.</li>
 							</ul>
 						</div>
 					</div>
 
 					<!-- Project 4 -->
 					<div class="glass p-6 rounded-2xl space-y-4">
-						<h4 class="text-lg font-bold text-white">ECS Fargate, Aurora mysql RDS Autoscaling 적용</h4>
-						<div class="text-xs text-slate-400">ECS Fargate, Aurora MySQL, EventBridge, Auto Scaling</div>
-						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 이벤트와 트래픽이 많은 시간대에는 Scaling out을 적용하고, 그 외 시간대에는 Scaling in을 적용하여 ECS Fargate 컨테이너 및 DB의 리소스를 최적화하고 비용을 절감.</p>
-							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
-							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
-								<li>ECS Fargate 서비스 및 Aurora MySQL RDS 인스턴스에 대한 오토스케일링 정책 구현.</li>
-								<li>EventBridge를 활용하여 특정 시간대 또는 이벤트 기반으로 스케일링 트리거 설정.</li>
-								<li>Scale-out/in 로직 개발 및 실환경 테스트 검증.</li>
-							</ul>
-							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
-							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>트래픽 패턴에 따른 컴퓨팅 및 DB 리소스 최적화로 비용 절감.</li>
-								<li>서비스 가용성 및 성능 향상 (부하 시 빠른 확장, 유휴 시 리소스 절감) 및 관리 오버헤드 감소.</li>
-							</ul>
-						</div>
-					</div>
-
-					<!-- Project 5 -->
-					<div class="glass p-6 rounded-2xl space-y-4">
 						<h4 class="text-lg font-bold text-white">braze push 스케줄 이벤트 자동화</h4>
-						<div class="text-xs text-slate-400">Braze API, EventBridge, Lambda, Slack Webhook</div>
+						<div class="text-xs text-slate-400">Braze API, EventBridge, Lambda, Slack, Email</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 매일 이벤트성으로 발송되는 push 스케줄을 braze의 캘린더 API를 이용하여 자동으로 받아오고, EventBridge에 해당 시간에 스케줄을 자동으로 등록하여 반복되는 업무를 줄이며, 추가된 이벤트 일정을 Slack과 Mail로 받아볼 수 있도록 자동화 함수 작성.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 매일 이벤트성으로 발송되는 push 스케줄을 braze의 캘린더 API를 이용하여 자동으로 받아오고, eventbridge에 해당 시간에 스케줄을 자동으로 등록하여 반복되는 업무를 줄이고, 추가된 이벤트 일정을 Slack과 Mail로 받아볼 수 있도록 함수를 작성.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
 								<li>Braze 캘린더 API 연동 및 데이터 수집 로직 개발.</li>
@@ -157,27 +141,28 @@ import Layout from '../layouts/BlogPost.astro';
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
 								<li>반복적인 수동 작업 제거를 통한 업무 효율성 증대.</li>
-								<li>휴먼 에러 감소 및 스케줄링 정확도 향상, 이벤트 일정에 대한 실시간 알림 시스템 구축.</li>
+								<li>휴먼 에러 감소 및 스케줄링 정확도 향상.</li>
+								<li>이벤트 일정에 대한 실시간 알림 시스템 구축.</li>
 							</ul>
 						</div>
 					</div>
 
-					<!-- Project 6 (Q-SE Harness 추가) -->
+					<!-- Project 5 -->
 					<div class="glass p-6 rounded-2xl space-y-4">
-						<h4 class="text-lg font-bold text-white">AWS IaC(OpenTofu/Terraform) 자동 검증 파이프라인 및 AI 에이전트 하네스(Q-SE Harness) 구축</h4>
-						<div class="text-xs text-slate-400">OpenTofu, Terraform, AI Agents, GitLab CI, Python, Shell</div>
+						<h4 class="text-lg font-bold text-white">RDS snapshot to S3 자동 백업 파이프라인 구축</h4>
+						<div class="text-xs text-slate-400">AWS Lambda, EventBridge, RDS, S3, Slack Webhook</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 인프라 변경 작업 및 YAML 환경 설정 자동화를 위해 AI 에이전트와 연동되는 가드레일 하네스를 설계하여 인프라 변경 시 발생할 수 있는 휴먼 에러를 원천 예방하고 지속성 있는 자가 학습 환경을 구축.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 매일 생성되는 RDS 스냅샷을 사용하여 S3에 데이터를 저장하는 자동화된 작업을 구성하고, eventbridge를 이용하여 RDS 이벤트 카테고리의 ID 값을 받아 export 실패 시 Slack으로 알림을 받을 수 있도록 구성. 클라우드 인프라 관리의 가용성과 안정성 보장 및 비즈니스 연속성 유지.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
-								<li>인프라 작업 티켓 접수 시 Planner ➡️ Builder ➡️ QA 에이전트로 이어지는 검증 및 자동화 체이닝 워크플로우 설계.</li>
-								<li>작업 디렉토리 환경(dev, qa, prd)과 AWS 프로필, S3 백엔드 버킷의 일치 여부를 tofu 실행 전 이중 검증하는 env-profile-guard 스킬 구현.</li>
-								<li>QA FAIL 판정 및 plan 에러 발생 시 원인을 자동 아카이빙(q_신뢰도.csv)하고 이를 방어 스킬로 승격시키는 자가 학습(Self-Learning) Instinct 파이프라인 개발.</li>
+								<li>AWS Lambda 및 EventBridge를 활용하여 RDS 스냅샷을 S3에 자동 백업하는 시스템 구축.</li>
+								<li>RDS 이벤트 기반 스냅샷 export 실패 알림 (Slack) 기능 구현.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>잘못된 프로필을 이용한 타 환경 배포 오류를 사전에 100% 차단하는 인프라 안전 가드레일 확립.</li>
-								<li>반복 수작업 코드 린팅 및 검토 시간을 극적으로 축소하고 인프라 변경 이력 감사 로그(Audit History) 체계 구축.</li>
+								<li>RDS 데이터 백업 자동화 및 안정성 확보로 재해 복구 능력 향상.</li>
+								<li>스냅샷 export 실패에 대한 빠른 감지 및 대응 체계 구축.</li>
+								<li>인프라 운영의 안정성 및 비즈니스 연속성 보장.</li>
 							</ul>
 						</div>
 					</div>
@@ -185,48 +170,72 @@ import Layout from '../layouts/BlogPost.astro';
 			</div>
 
 			<!-- 2. 브랜디 -->
-			<div class="relative pl-6 border-l-2 border-slate-800 space-y-6">
-				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
+			<div class="relative pl-6 border-l-2 border-indigo-500/30 space-y-6">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500"></div>
 				<div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
-					<h3 class="text-xl font-bold text-white">브랜디 (Brandi)</h3>
-					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400">2020.05 - 2022.03</span>
+					<h3 class="text-xl font-bold text-white">브랜디</h3>
+					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-indigo-400">2020.05 - 2022.03</span>
 				</div>
 				<p class="text-sm text-slate-400">클라우드 인프라 엔지니어 (정규직)</p>
 				
 				<div class="space-y-6 pt-2">
+					<!-- Project 1 -->
 					<div class="glass p-6 rounded-2xl space-y-4">
-						<h4 class="text-lg font-bold text-white">VPC 네트워크 리소스 및 CI/CD 구성 IaC 자동화</h4>
-						<div class="text-xs text-slate-400">Terraform, AWS CodePipeline, AWS CodeBuild, VPC</div>
+						<h4 class="text-lg font-bold text-white">CI/CD 구성 자동화</h4>
+						<div class="text-xs text-slate-400">Terraform, AWS CodePipeline, AWS CodeBuild</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 반복적인 Subnet 구성 및 AWS CodePipeline, CodeBuild 리소스 생성을 Terraform으로 코드화(IaC)하여 반복적인 작업을 줄이고 인프라 배포 시의 휴먼 에러를 방지.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 반복되는 codepipeline, codebuild 생성을 Terraform으로 코드화하여 반복적인 작업을 줄이고 휴먼에러를 줄이는 것을 목적.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
-								<li>Terraform 모듈을 사용하여 VPC 내 Subnet 및 NAT Gateway 구성 자동화.</li>
-								<li>Terraform을 활용하여 AWS CodePipeline 및 CodeBuild 리소스를 IaC로 자동화하고 재사용 가능한 템플릿 코드화.</li>
+								<li>Terraform을 활용하여 AWS CodePipeline 및 CodeBuild 리소스를 IaC(Infrastructure as Code)로 자동화.</li>
+								<li>CI/CD 파이프라인 템플릿 개발 및 재사용성 확보.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>네트워크 인프라 및 CI/CD 환경 구축 시간 단축, 인프라 일관성 유지 및 구성 오류 대폭 감소.</li>
+								<li>CI/CD 환경 구축 시간 단축 및 반복 작업 감소.</li>
+								<li>휴먼 에러 최소화 및 배포 프로세스의 일관성 증대.</li>
+								<li>개발 생산성 향상 및 배포 안정성 확보.</li>
 							</ul>
 						</div>
 					</div>
 
+					<!-- Project 2 -->
 					<div class="glass p-6 rounded-2xl space-y-4">
-						<h4 class="text-lg font-bold text-white">WAS 서버 EKS 마이그레이션 및 고도화</h4>
-						<div class="text-xs text-slate-400">Amazon EKS, Prometheus, Grafana, HPA, AWS CodePipeline</div>
+						<h4 class="text-lg font-bold text-white">Terraform을 이용한 구성 자동화</h4>
+						<div class="text-xs text-slate-400">Terraform, VPC, Subnet, NAT Gateway</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 기존 EC2로 구성되어 있던 WAS 서버를 Kubernetes(EKS) 기반으로 마이그레이션하여 모던 컨테이너 아키텍처로 전환하고, 오토스케일링 및 시스템 메트릭 모니터링 체계를 구축하여 안정성을 극대화.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 반복 작업인 Subnet 구성을 코드화하여 빠르게 생성할 수 있도록 Terraform으로 구성. public subnet, private subnet, nat 구성 등을 코드화.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
-								<li>EC2 기반 WAS를 EKS(Elastic Kubernetes Service) 환경으로 안전하게 마이그레이션 설계 및 리소스 구축.</li>
-								<li>HPA(Horizontal Pod Autoscaler)를 설계 및 구현하여 트래픽 부하 분산과 파드 오토스케일링 최적화.</li>
-								<li>Grafana와 Prometheus를 구성하여 모니터링 대시보드 시각화 및 문제 발생 시 Pod 개수 및 메트릭 역추적 환경 구성.</li>
-								<li>AWS CodeCommit, CodeBuild, CodePipeline을 활용한 k8s 전용 CI/CD 자동 배포 파이프라인 통합 구축.</li>
+								<li>Terraform 모듈을 사용하여 VPC 내 Subnet 및 NAT Gateway 구성 자동화.</li>
+								<li>재사용 가능한 네트워크 인프라 코드 개발.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>WAS 서버의 확장성, 가용성 및 리소스 활용 효율성 극대화 (부하 시 실시간 확장 및 자동 최적화).</li>
-								<li>실시간 이슈 분석 및 인프라 트래픽 메트릭 시각화 대시보드 인프라 마련.</li>
+								<li>네트워크 인프라 구축 시간 단축 및 구성 오류 감소.</li>
+								<li>인프라 일관성 유지 및 관리 효율성 증대.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 3 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">WAS 서버 EKS 마이그레이션</h4>
+						<div class="text-xs text-slate-400">Kubernetes, AWS EKS, HPA, Grafana, Prometheus, CodePipeline</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 기존 EC2로 구성되어 있던 WAS 서버를 Kubernetes 기반으로 마이그레이션하고 기존의 문제점을 해결. HPA를 통한 AutoScaling으로 서비스의 안정성을 높이고, Grafana, Prometheus를 구성하여 metrics 정보를 그래프화하고 문제가 발생했던 시기의 Pod 갯수, metrics 정보를 볼 수 있도록 구성.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>EC2 기반 WAS를 EKS(Elastic Kubernetes Service)로 마이그레이션.</li>
+								<li>HPA(Horizontal Pod Autoscaler)를 활용한 서비스 오토스케일링 구현.</li>
+								<li>Grafana, Prometheus를 이용한 모니터링 시스템 구축 및 대시보드 시각화.</li>
+								<li>CodeCommit, CodeBuild, CodePipeline을 활용한 CI/CD 파이프라인 구축.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>WAS 서버의 확장성 및 가용성 대폭 향상.</li>
+								<li>리소스 활용 효율성 증대 및 비용 최적화 (오토스케일링).</li>
+								<li>실시간 모니터링 및 문제 발생 시 신속한 분석 및 대응 체계 마련.</li>
 							</ul>
 						</div>
 					</div>
@@ -234,66 +243,285 @@ import Layout from '../layouts/BlogPost.astro';
 			</div>
 
 			<!-- 3. 에스티유니타스 -->
-			<div class="relative pl-6 border-l-2 border-slate-800 space-y-6">
-				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
+			<div class="relative pl-6 border-l-2 border-indigo-500/30 space-y-6">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500"></div>
 				<div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
-					<h3 class="text-xl font-bold text-white">에스티유니타스 (ST Unitas)</h3>
-					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400">2015.11 - 2020.04</span>
+					<h3 class="text-xl font-bold text-white">에스티유니타스</h3>
+					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-indigo-400">2015.11 - 2020.04</span>
 				</div>
 				<p class="text-sm text-slate-400">인프라 시스템 엔지니어 (정규직)</p>
 				
 				<div class="space-y-6 pt-2">
+					<!-- Project 1 -->
 					<div class="glass p-6 rounded-2xl space-y-4">
-						<h4 class="text-lg font-bold text-white">ELK Stack 기반 container log 분석 시스템 구축</h4>
-						<div class="text-xs text-slate-400">Elasticsearch, Logstash, Kibana, Filebeat, Metricbeat, GeoIP</div>
+						<h4 class="text-lg font-bold text-white">ELK Stack 기반으로 한 container log 분석 시스템 구축</h4>
+						<div class="text-xs text-slate-400">Elasticsearch, Kibana, Filebeat, Metricbeat, Logstash, GeoIP</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> Kubernetes 클러스터에서 발생하는 컨테이너 로그 및 AWS S3에 저장되는 ELB access log를 파싱하고 Elasticsearch에 적재하여, Kibana를 통해 분석 및 시각화할 수 있는 통합 로그 분석 환경 구축.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> k8s에서 발생하는 모든 container 로그를 Elasticsearch에 적재하고 Kibana에서 분석할 수 있는 시스템을 구축. k8s Worker node에 filebeat와 metricbeat를 설치해서 container 로그를 적재하고, AWS S3에 저장되는 ELB access log를 logstash로 filter하여 elasticsearch에 적재, Kibana에서 ELB access log를 통해 geoip, elb_status_code 기반 그래프 및 map 생성.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
-								<li>Kubernetes Worker node에 Filebeat와 Metricbeat를 설치하여 컨테이너 로그 및 메트릭 실시간 수집 인프라 구축.</li>
-								<li>Logstash 필터를 사용해 ELB access log를 파싱하고 GeoIP 및 HTTP status code 기반 그래프/맵 대시보드 시각화 구현.</li>
+								<li>Kubernetes 환경에서 Filebeat, Metricbeat를 이용한 컨테이너 로그 및 메트릭 수집 시스템 구축.</li>
+								<li>Logstash를 활용하여 ELB access log를 파싱하고 Elasticsearch에 적재.</li>
+								<li>Kibana를 이용한 로그 분석 대시보드 및 지리 정보/상태 코드 기반 시각화 구현.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>컨테이너 로그 및 로드밸런서 로그의 중앙 집중식 수집 분석 체계 확립, 실시간 모니터링 및 장애 감지 능력 강화.</li>
+								<li>Kubernetes 컨테이너 로그 및 ELB access log의 중앙 집중식 수집 및 분석 시스템 구축.</li>
+								<li>로그 데이터를 활용한 실시간 모니터링 및 문제 진단 능력 향상.</li>
+								<li>데이터 기반의 서비스 운영 및 의사 결정 지원.</li>
 							</ul>
 						</div>
 					</div>
 
+					<!-- Project 2 -->
 					<div class="glass p-6 rounded-2xl space-y-4">
-						<h4 class="text-lg font-bold text-white">ELK Stack 기반 RDS slow query reporting 시스템</h4>
-						<div class="text-xs text-slate-400">Elasticsearch, Kibana, Slack, RDS</div>
+						<h4 class="text-lg font-bold text-white">ELK Stack 기반으로 한 RDS slow query reporting</h4>
+						<div class="text-xs text-slate-400">Elasticsearch, Kibana, RDS, Slow Query Log</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 데이터베이스(RDS)에서 발생하는 슬로우 쿼리 로그를 정기적으로 수집 및 적재하여 Kibana에서 시각화하고, 매일 개발자들에게 리포팅하여 쿼리 튜닝 유도 및 데이터베이스 관련 장애 사전 예방.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> RDS에서 발생하는 slow query 로그를 다운받아 ELK에 저장하고 저장된 데이터를 Kibana에서 그래프로 볼 수 있게 대시보드 생성. 매일 하루 동안의 slow query를 reporting 하여 개발자들에게 공유하고 slow query로 인한 장애를 사전에 예방하고 조치할 수 있도록 지원.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
-								<li>RDS slow query 로그 수집 및 ELK Stack으로의 자동 적재 파이프라인 설계.</li>
-								<li>Kibana 대시보드를 활용한 slow query 시각화 및 개발자 공유용 일일 자동 리포팅 시스템 구축.</li>
+								<li>RDS slow query 로그 수집 및 ELK Stack으로의 적재 파이프라인 구축.</li>
+								<li>Kibana 대시보드를 활용한 slow query 시각화 및 리포팅 시스템 개발.</li>
+								<li>정기적인 slow query 리포트 자동화.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>DB 성능 저하의 주원인인 비효율 쿼리를 사전에 예방하고 개발자에게 튜닝 가이드를 제시하여 서비스 가용성 확보.</li>
+								<li>RDS 성능 저하의 주원인인 slow query에 대한 사전 예방 및 신속한 대응 체계 마련.</li>
+								<li>개발팀에 성능 개선을 위한 유의미한 데이터 제공.</li>
+								<li>데이터베이스 운영의 안정성 및 효율성 증대.</li>
 							</ul>
 						</div>
 					</div>
 
+					<!-- Project 3 -->
 					<div class="glass p-6 rounded-2xl space-y-4">
-						<h4 class="text-lg font-bold text-white">Kubernetes on AWS 시스템 구축 & CI/CD 설계</h4>
-						<div class="text-xs text-slate-400">kops, AWS EC2, GitLab CI, Docker, Docker Compose, Nagios, Grafana</div>
+						<h4 class="text-lg font-bold text-white">kubernetes on AWS 시스템 구축</h4>
+						<div class="text-xs text-slate-400">kops, Kubernetes, AWS EC2, Auto Scaling</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> kops를 통해 AWS에 고가용성 k8s 클러스터를 구축하고, 다단계 자동 배포 CI/CD 파이프라인과 장애 자동 복구(Auto Healing) 모니터링 시스템을 구축.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> kops를 이용하여 AWS에 kubernetes 시스템을 구축하여 container auto scaling이 되도록 구축함으로써 EC2로 나가는 비용을 절약하고 container 기반의 DEV 환경과 staging 환경 production 환경을 일치시킴으로써 개발환경과 실서버 간에 시스템 환경을 동일하게 구축.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
-								<li>kops를 사용한 AWS 기반 k8s 클러스터 프로비저닝 및 Pod Auto Scaling 연동 구축.</li>
-								<li>GitLab CI를 활용하여 DEV ➡️ QA ➡️ Staging ➡️ Production 순으로 브랜치 기반 자동 빌드 및 배포 파이프라인 설계.</li>
-								<li>Nagios 및 Grafana 모니터링 시스템을 구축하고, 장애 감지 시 Jenkins API를 자동 호출해 웹서버 및 프로세스를 자동 재시작하는 복구 시나리오 적용.</li>
-								<li>MySQL Replication (Master-Slave 1:2) 복제 구성 및 일일 자동 Full Dump 백업 스크립트 개발.</li>
-								<li>PM2 모니터링 툴을 활용한 Node.js 서버 프로세스 이중화 및 DNS 라운드로빈 기반 가용성 인프라 관리.</li>
+								<li>kops를 활용한 AWS 기반 Kubernetes 클러스터 구축.</li>
+								<li>컨테이너 자동 스케일링(Auto Scaling) 기능 구현.</li>
+								<li>개발, 스테이징, 프로덕션 환경의 컨테이너 기반 일치화.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>빌드 배포 속도 향상, 단계별 배포 테스트를 통한 릴리즈 리스크 최소화.</li>
-								<li>임계치 모니터링 기반 오토 힐링 인프라 확보 및 DB 읽기 부하 분산 최적화 성공.</li>
+								<li>EC2 리소스 비용 절감 및 효율적인 리소스 활용.</li>
+								<li>개발 환경과 운영 환경의 일관성 확보로 배포 오류 감소.</li>
+								<li>컨테이너 기반 아키텍처 도입으로 서비스 확장성 및 유연성 증대.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 4 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">CI/CD 시스템 설계 및 구축</h4>
+						<div class="text-xs text-slate-400">GitLab CI, Docker, Docker Compose</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> DEV->QA->staging->production 순으로 배포될 수 있도록 시스템을 구축. gitlab-ci를 활용한 각각의 브랜치에 서버에 deploy 될 수 있도록 설계하고, 개발자들이 빠르게 배포하고 안정적으로 production 시스템에 배포될 수 있도록 설계. docker+docker-compose를 활용하여 배포될 수 있도록 구성.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>GitLab CI를 활용한 다단계(DEV, QA, staging, production) 배포 파이프라인 설계 및 구축.</li>
+								<li>Docker 및 Docker Compose를 이용한 컨테이너 기반 배포 환경 조성.</li>
+								<li>브랜치 전략에 따른 자동 배포 시스템 구현.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>배포 프로세스의 자동화 및 속도 향상.</li>
+								<li>배포 단계별 안정성 및 품질 관리 강화.</li>
+								<li>개발자와 운영팀 간의 협업 효율성 증대.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 5 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">Mysql Replication</h4>
+						<div class="text-xs text-slate-400">MySQL, Database Replication, Shell Script, Backup</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> mysql replication을 구성. Master 1대, Slave 2대로 구성하여 mysql의 부하를 분산시키고 매일 새벽에 mysql full dump 하여 사내에 있는 파일 서버에 저장하도록 script를 개발.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>MySQL Master-Slave (1 Master, 2 Slaves) 복제 환경 구축.</li>
+								<li>MySQL 부하 분산을 위한 복제 구성.</li>
+								<li>매일 새벽 MySQL Full Dump 및 파일 서버 저장 자동화 스크립트 개발.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>MySQL 데이터베이스의 고가용성 및 읽기 부하 분산.</li>
+								<li>데이터 유실 방지를 위한 정기적인 백업 자동화.</li>
+								<li>데이터베이스 서비스의 안정성 및 성능 향상.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 6 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">AWS RDS와 IDC MYSQL Master 서버 동기화</h4>
+						<div class="text-xs text-slate-400">AWS RDS, MySQL, Database Migration</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> IDC의 Mysql 서버를 RDS로 이전. 최소한의 down-time을 위해 IDC mysql 서버와 RDS 간의 replication을 구축. RDS는 root 권한을 주지 않기 때문에 "mysql.rds_set_external_master" 프로시저를 사용하여 RDS의 slave 구축.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>IDC MySQL Master와 AWS RDS 간의 복제 구성.</li>
+								<li>"mysql.rds_set_external_master" 프로시저를 이용한 RDS Slave 설정.</li>
+								<li>최소 다운타임을 위한 마이그레이션 전략 수립 및 실행.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>IDC MySQL 서버의 AWS RDS로의 성공적인 마이그레이션.</li>
+								<li>마이그레이션 과정 중 서비스 다운타임 최소화.</li>
+								<li>RDS의 관리형 서비스를 통한 DB 운영 효율성 및 안정성 향상.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 7 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">Redis 구축 및 replica 구성</h4>
+						<div class="text-xs text-slate-400">Redis, Replica, Database Archiving</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> Redis 서버를 구축하여 nosql 시스템을 구축. Master 1대, replica 1대로 구축하여 부하를 분산하도록 시스템을 설계하고, RDB 파일로 생성되도록 구성하여 갑작스러운 장애에 대비.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>Redis Master-Replica (1 Master, 1 Replica) 클러스터 구축.</li>
+								<li>Redis 부하 분산을 위한 복제 구성.</li>
+								<li>RDB 영구 스냅샷 설정을 통한 데이터 내구성 확보 및 장애 대비.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>Nosql 시스템 구축 및 Redis 고가용성 확보.</li>
+								<li>데이터베이스 읽기 부하 분산 및 성능 향상.</li>
+								<li>갑작스러운 장애 시 데이터 유실 방지 및 빠른 복구 체계 마련.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 8 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">nodejs 설치 및 운영 관리</h4>
+						<div class="text-xs text-slate-400">Node.js, PM2, DNS Round Robin, Load Balancing</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> nodejs 서버를 2대 설치하여 DNS 라운드로빈을 이용하여 이중화 처리. Pm2를 설치하여 프로세스의 메모리를 관리하고 pm2-web을 이용하여 모니터링이 가능하도록 기능을 추가. 보안을 위해 pm2-web에 인증기능 추가.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>Node.js 서버 2대 구축 및 DNS 라운드 로빈을 이용한 이중화 구성.</li>
+								<li>PM2를 활용한 Node.js 프로세스 관리 (메모리, 모니터링).</li>
+								<li>PM2-Web에 인증 기능 추가하여 보안 강화.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>Node.js 애플리케이션의 고가용성 및 로드 밸런싱 구현.</li>
+								<li>프로세스 안정성 확보 및 리소스 효율적인 관리.</li>
+								<li>운영 모니터링 환경 구축 및 보안 강화.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 9 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">모니터링 시스템 구축(Nagios core)</h4>
+						<div class="text-xs text-slate-400">Nagios Core, Grafana, Jenkins API, Slack, SMS</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> Nagios Core 버전을 Deploy 하여 웹서버, DB 서버 등을 모니터링하고 시스템에 장애가 생겼을 경우에 Jenkins의 api를 이용하여 자동 재시작을 실행시키고 담당자에게 문자메세지 및 Push APP를 이용한 Alarm 개발. Nagios는 기본적으로 그래픽으로 된 UI를 제공하지 않기 때문에 grafana를 이용하여 Nagios low data를 활용하여 grafana UI 시스템을 구축.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>Nagios Core 기반의 웹서버, DB 서버 등 핵심 인프라 모니터링 시스템 구축.</li>
+								<li>Jenkins API 연동을 통한 장애 시 자동 재시작 기능 구현.</li>
+								<li>문자메시지 및 Push App을 통한 알람 시스템 개발.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>시스템 장애에 대한 실시간 감지 및 자동 복구 시스템 마련.</li>
+								<li>장애 발생 시 담당자에게 신속한 알림 전달 체계 구축.</li>
+								<li>모니터링 데이터의 시각화를 통한 직관적인 시스템 상태 파악 및 운영 효율성 증대.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 10 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">Public Cloud를 활용한 시스템 구축</h4>
+						<div class="text-xs text-slate-400">AWS EC2, RDS, ElastiCache, Route53, ELB, IAM</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> AWS를 활용한 시스템을 구축. EC2, RDS, Redis(ElasticCache), Route53, ELB 등을 활용하여 웹 서비스 시스템을 구축하고 IAM을 이용하여 계정을 관리.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>AWS EC2, RDS, ElastiCache, Route53, ELB 등 다양한 AWS 서비스 활용 인프라 구축.</li>
+								<li>웹 서비스 시스템 아키텍처 설계 및 구현.</li>
+								<li>IAM을 이용한 계정 및 권한 관리.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>Public Cloud(AWS) 기반의 확장 가능하고 안정적인 웹 서비스 인프라 구축.</li>
+								<li>클라우드 환경에서의 인프라 구성 및 관리 역량 강화.</li>
+								<li>리소스 효율성 및 운영 유연성 증대.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 11 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">vagrant를 활용한 개발 테스트 환경 구축</h4>
+						<div class="text-xs text-slate-400">Vagrant, VirtualBox, Ansible, Provisioning</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 개발자마다 다른 환경(개인 PC에 Virtualbox를 사용)을 Vagrant 이용함으로써 단순화시키고 Vagrantfile을 개발 및 관리. ansible를 이용한 프로비저닝 구축.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>Vagrant를 이용한 가상 개발/테스트 환경 표준화 및 구축.</li>
+								<li>Vagrantfile을 통한 환경 구성 관리.</li>
+								<li>Ansible을 활용한 자동 프로비저닝 시스템 구현.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>개발 환경 설정의 복잡성 감소 및 일관성 확보.</li>
+								<li>개발자 생산성 향상 및 환경 불일치로 인한 오류 감소.</li>
+								<li>개발 환경 구축 시간 단축.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 12 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">gitlab 설치 및 운영관리</h4>
+						<div class="text-xs text-slate-400">Docker, GitLab, Active Directory, LDAP</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> docker를 활용하여 gitlab을 설치하고 사내 AD 서버와 연동하여 사용하던 계정으로 로그인이 가능하도록 구성. Gitlab runner를 활용하여 post-update를 구성하고 gitlab의 repo 데이터는 docker image가 아닌 local disk에 저장되도록 docker container 실행.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>Docker를 활용한 GitLab 설치 및 운영.</li>
+								<li>사내 Active Directory 서버와의 연동을 통한 통합 인증 시스템 구축.</li>
+								<li>GitLab Runner를 활용한 CI/CD 파이프라인 구성 및 post-update 설정.</li>
+								<li>GitLab Repository 데이터를 로컬 디스크에 저장하도록 Docker 컨테이너 설정.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>GitLab 기반의 협업 개발 환경 구축 및 CI/CD 자동화.</li>
+								<li>사용자 인증 및 권한 관리의 효율성 증대.</li>
+								<li>레포지토리 데이터의 안정적인 관리 및 백업 용이성 확보.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 13 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">jenkins + github webhook을 이용한 docker container 배포 자동화</h4>
+						<div class="text-xs text-slate-400">Jenkins, GitHub Webhook, Docker Registry, Automated Deployment</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> git push 시 github의 webhook trigger를 이용하여 jenkins와 연동하고 jenkins에서 docker image build 후 docker private registry에 이미지를 저장하고 docker host server에서 이미지를 받아온 후 container를 자동으로 시작할 수 있도록 배포를 자동화.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>GitHub Webhook과 Jenkins 연동을 통한 코드 변경 감지 시스템 구축.</li>
+								<li>Jenkins를 활용한 Docker 이미지 빌드 및 프라이빗 레지스트리 저장 자동화.</li>
+								<li>Docker Host Server에 컨테이너 자동 배포 및 시작 시스템 구현.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>Git Push부터 Docker 컨테이너 배포까지의 CI/CD 파이프라인 완전 자동화.</li>
+								<li>배포 시간 단축 및 수동 작업으로 인한 오류 최소화.</li>
+								<li>개발 생산성 및 서비스 릴리즈 속도 향상.</li>
 							</ul>
 						</div>
 					</div>
@@ -301,62 +529,323 @@ import Layout from '../layouts/BlogPost.astro';
 			</div>
 
 			<!-- 4. 클루닉스 -->
-			<div class="relative pl-6 border-l-2 border-slate-800 space-y-6">
-				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
+			<div class="relative pl-6 border-l-2 border-indigo-500/30 space-y-6">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500"></div>
 				<div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
 					<h3 class="text-xl font-bold text-white">클루닉스</h3>
-					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400">2011.03 - 2015.04</span>
+					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-indigo-400">2011.03 - 2015.04</span>
 				</div>
 				<p class="text-sm text-slate-400">HPC 클러스터 엔지니어 (정규직)</p>
 				
 				<div class="space-y-6 pt-2">
+					<!-- Project 1 -->
 					<div class="glass p-6 rounded-2xl space-y-4">
-						<h4 class="text-lg font-bold text-white">대규모 국방 및 기업체 연구원 대상 고성능 병렬 컴퓨팅(HPC) 시스템 구축</h4>
-						<div class="text-xs text-slate-400">HPC Cluster, Parallel File System, OpenXEN, GPU Passthrough, IPVSADM, Abaqus, Ansys, Fluent, LS-Dyna</div>
+						<h4 class="text-lg font-bold text-white">LGDisplay RnD Cloud 설계시스템 구축</h4>
+						<div class="text-xs text-slate-400">RnD Cloud, Linux Virtualization, Storage Integration</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 연구기관 및 대기업 연구소의 설계/수치해석 시뮬레이션 속도 향상을 위해 대규모 고성능 컴퓨팅(HPC) 클러스터를 설계하고, 병렬 파일 시스템 및 가상 데스크탑 인프라를 구축.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 약 500여 명의 연구원이 152대의 가상화 OS, 고성능 Cloud 환경에서 원하는 S/W를 원격에서 실행하고 연구용 데이터를 통합 스토리지에 저장함으로써 사내 어디서든 접속이 가능하도록 구축.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
-								<li>국방과학연구소 대규모 HPC 및 HA(고가용성) 클러스터 환경 설계 (약 150대 규모, 병렬파일시스템 최적화 구축).</li>
-								<li>KIOST 및 LG Display R&D 부서를 위한 OpenXEN 가상화 시스템 설계 및 GPU Passthrough 데스크탑 3D 시뮬레이션 환경 구축.</li>
-								<li>한국타이어 전산센터 내 Abaqus 시뮬레이션 HPC 클러스터 통합 및 라이선스 공유 시스템 구축.</li>
-								<li>LG U+ OAM 서버 고가용성(HA) 이중화 클러스터링 및 MySQL 접속 여부 기반 Failover 감지 고도화.</li>
-								<li>KBS NFS 및 Apache 웹서버 로드밸런싱(IPVSADM 활용) 및 가용성 높은 SAMBA 파일 이중화 클러스터링 설계.</li>
-								<li>상용 해석용 소프트웨어(Abaqus, Ansys, Fluent, LS-Dyna) 및 오픈소스 병렬 소프트웨어(mpich, openmpi, vasp, lammps, fds) 병렬 연산 환경 기술 지원.</li>
+								<li>고성능 Cloud 환경 기반의 연구용 가상화 시스템 설계 및 구축.</li>
+								<li>연구용 S/W 원격 실행 환경 구현.</li>
+								<li>연구 데이터 통합 스토리지 시스템 구축.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
-								<li>분산된 개인 워크스테이션 환경을 중앙 HPC 클러스터로 통합하여 컴퓨팅 리소스 효율성 및 해석 속도 극대화.</li>
-								<li>원격 그래픽 자원 최적화로 고성능 3D 캐드/해석 툴을 어디서나 원활하게 액세스할 수 있는 가상화 데스크탑 환경 마련.</li>
+								<li>연구원들의 S/W 접근성 및 연구 데이터 공유 용이성 향상.</li>
+								<li>연구 환경의 효율성 및 유연성 증대.</li>
+								<li>연구 생산성 향상 및 협업 강화.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 2 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">국방과학연구소 대규모 HPC 및 HA 클러스터 환경 구축</h4>
+						<div class="text-xs text-slate-400">HPC Cluster, High Availability (HA), VNC, X-forwarding</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 300여 명의 사용자가 웹 UI를 통해 클러스터 시스템에 접근하여 연구용 S/W 라이선스를 공유하고 데이터를 통합함으로써 기존에 개인이 사용하던 라이선스의 관리 효율성에 기여. VNC 환경 및 X-forwarding을 사용할 수 있게 시스템을 구축함으로써 원격에서도 remote 그래픽 자원을 활용하고 개인 컴퓨터에서 사용하는 것과 비슷한 성능 구현.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>대규모 HPC(고성능 컴퓨팅) 및 HA(고가용성) 클러스터 환경 설계 및 구축.</li>
+								<li>웹 UI 기반의 S/W 라이선스 공유 시스템 및 데이터 통합 시스템 개발.</li>
+								<li>VNC 및 X-forwarding을 통한 원격 그래픽 작업 환경 구축.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>연구용 S/W 라이선스 관리 효율성 대폭 향상.</li>
+								<li>연구 데이터 공유 및 협업 환경 개선.</li>
+								<li>원격 그래픽 작업 성능 최적화 및 사용자 편의성 증대.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 3 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">KIOST 가상화 데스크탑 시스템 구축</h4>
+						<div class="text-xs text-slate-400">OpenXEN, GPU Passthrough, Virtual Desktop Infrastructure</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> OpenXEN과 GPU passthrough를 이용한 가상 운영체제에서 만족할 만한 3D 데스크탑 환경을 구축. GPU Passthrough를 이용함으로써 가상 OS에서도 연구용 S/W를 실행할 수 있도록 구현하고 KIOST 내 어디서든 인터넷이 가능하다면 작업 결과물을 볼 수 있도록 구현.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>OpenXEN 및 GPU Passthrough 기술을 활용한 가상화 데스크탑 환경 구축.</li>
+								<li>연구용 3D S/W 실행을 위한 가상 OS 환경 최적화.</li>
+								<li>네트워크 연결성 확보 및 작업 결과물 접근성 향상.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>고성능 3D S/W를 가상 환경에서 원활하게 실행 가능한 환경 마련.</li>
+								<li>연구원들의 작업 환경 유연성 및 접근성 향상.</li>
+								<li>GPU 리소스의 효율적인 활용.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 4 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">한국타이어 고성능 병렬 컴퓨팅 구축</h4>
+						<div class="text-xs text-slate-400">HPC Cluster, Abaqus, Resource Consolidation</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 사용자가 개인 워크스테이션에서 시뮬레이션하던 abaqus 작업을 전산실 센터에 구축하여 모든 연구원이 한 HPC Cluster 내에서 라이선스 및 작업 결과물을 공유하여 작업의 효율성을 높이도록 구축 및 설계.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>HPC 클러스터 내 abaqus 시뮬레이션 환경 구축.</li>
+								<li>라이선스 및 작업 결과물 공유 시스템 설계 및 구현.</li>
+								<li>개인 워크스테이션 환경을 중앙 HPC 클러스터로 통합.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>연구원들의 abaqus 시뮬레이션 작업 효율성 대폭 향상.</li>
+								<li>라이선스 및 결과물 공유를 통한 협업 환경 개선.</li>
+								<li>컴퓨팅 리소스의 중앙 집중화 및 효율적 활용.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 5 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">한국가스공사 RND 및 라이선스 통합 시스템 구축</h4>
+						<div class="text-xs text-slate-400">Web Portal, License Integration, System Integration</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 연구용 어플리케이션 및 시스템 통합 및 라이선스 통합을 웹 UI에서 한 눈에 볼 수 있도록 시스템 구축.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>연구용 애플리케이션 및 시스템 통합.</li>
+								<li>라이선스 통합 관리 시스템 개발.</li>
+								<li>웹 UI 기반의 통합 관리 시스템 구축.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>연구용 자원의 통합 관리 및 접근성 향상.</li>
+								<li>라이선스 관리의 효율성 및 투명성 증대.</li>
+								<li>직관적인 웹 UI를 통한 사용자 편의성 향상.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 6 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">LG U+ OAM 서버 HA 클러스터링</h4>
+						<div class="text-xs text-slate-400">MySQL HA, Failover Monitoring, OAM Server</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> MYSQL 가용성을 높이기 위한 프로젝트. 단순히 System Fail or Network Fail 상태만 Monitoring 하는 것이 아닌 MYSQL 접속여부를 Monitoring 하여 Fail 감지의 정확도를 올린다.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>OAM 서버의 MySQL 고가용성(HA) 클러스터링 구성.</li>
+								<li>단순 시스템/네트워크 상태 모니터링을 넘어선 MySQL 접속 여부 모니터링 기능 구현.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>MySQL 데이터베이스의 고가용성 및 서비스 연속성 확보.</li>
+								<li>Fail 감지 정확도 향상으로 서비스 다운타임 최소화.</li>
+								<li>안정적인 OAM 서비스 운영 환경 구축.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 7 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">KBS NFS, Apache 서버 LB 클러스터링</h4>
+						<div class="text-xs text-slate-400">NFS Cluster, Apache Load Balancing, IPVSADM, SAMBA HA</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> SAMBA의 가용성을 높이기 위한 프로젝트.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>NFS(Network File System) 서버 구축.</li>
+								<li>Apache 웹 서버 로드 밸런싱(LB) 클러스터링 구성.</li>
+								<li>IPVSADM을 이용한 로드 밸런싱 구현.</li>
+								<li>Samba 서비스의 고가용성 확보.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>Samba 파일 서비스의 고가용성 및 안정성 확보.</li>
+								<li>Apache 웹 서버의 트래픽 분산 및 성능 향상.</li>
+								<li>파일 및 웹 서비스의 연속성 보장.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 8 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">YBM 어학원 Qmail 서버 HA 클러스터링</h4>
+						<div class="text-xs text-slate-400">Qmail Server, High Availability, Mail Service Monitoring</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> Qmail의 가용성을 높이기 위한 프로젝트. 단순히 System Fail or Network Fail 상태만 Monitoring 하는 것이 아닌 Qmail 서비스 작동여부를 Monitoring 하여 Fail 감지의 정확도를 올린다.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>Qmail 메일 서버의 고가용성(HA) 클러스터링 구성.</li>
+								<li>Qmail 서비스 작동 여부 모니터링 기능 구현 (단순 시스템 상태 모니터링을 넘어선).</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>Qmail 메일 서비스의 고가용성 및 안정성 확보.</li>
+								<li>Fail 감지 정확도 향상으로 메일 서비스 다운타임 최소화.</li>
+								<li>안정적인 메일 서비스 운영 환경 구축.</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<!-- 이전 경력 생략 요약 -->
-			<div class="relative pl-6 border-l-2 border-slate-800 space-y-4 text-xs text-slate-500">
-				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-slate-800"></div>
+			<!-- 5. 서울대학교약학대학연구실 -->
+			<div class="relative pl-6 border-l-2 border-indigo-500/30 space-y-6">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500"></div>
+				<div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+					<h3 class="text-xl font-bold text-white">서울대학교 약학대학 연구실</h3>
+					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-indigo-400">2008.10 - 2010.05</span>
+				</div>
+				<p class="text-sm text-slate-400">연구실 인프라 관리자 (정규직)</p>
 				
-				<div class="space-y-3">
-					<p class="font-bold text-slate-400">학계 및 초기 연구실 경력</p>
-					
-					<div class="glass p-4 rounded-xl space-y-2">
-						<strong class="text-slate-300">서울대학교 약학대학 연구실 (2008.10 - 2010.05)</strong>
-						<ul class="list-disc pl-4 space-y-1 text-slate-400">
-							<li>Squid proxy server 구축 및 kisti IP 대역대 기반 서울대 내부 사이트 원격 우회 접속망 지원.</li>
-							<li>IntegraTUM WebDisk를 활용한 SAMBA 기반 웹 스토리지 시스템 구성 및 파일 공유 기능 구축.</li>
-						</ul>
+				<div class="space-y-6 pt-2">
+					<!-- Project 1 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">Proxy server 구축</h4>
+						<div class="text-xs text-slate-400">Squid Proxy, IP Access Control, Network Security</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 연구원분들이 서울대 내부 사이트에 접속하지 못하는 문제가 있어 proxy server를 구축하여 연구원들이 kisti IP 대역대에서도 서울대 내부 사이트로 접속할 수 있게 설정.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>Squid proxy server 구축 및 설정.</li>
+								<li>네트워크 접근 제어 및 IP 대역 기반 접속 허용 설정.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>연구원들의 서울대 내부 망 접근성 확보 및 업무 연속성 보장.</li>
+								<li>네트워크 보안 및 접근 관리 효율성 증대.</li>
+							</ul>
+						</div>
 					</div>
 
-					<div class="glass p-4 rounded-xl space-y-2">
-						<strong class="text-slate-300">아이키스텍 (2006.10 - 2008.09)</strong>
-						<ul class="list-disc pl-4 space-y-1 text-slate-400">
-							<li>고등과학원 HPC 리눅스 클러스터 64대 조립 및 랜케이블 제작, 계산용 소프트웨어 기술 지원.</li>
-							<li>배재대학교 HPC 리눅스 클러스터 20대 OS 설치, Ganglia 모니터링 연동 및 HPL 벤치마크 수행.</li>
-							<li>인하대학교 리눅스 클러스터 튜닝, Torque 작업 스케줄러 셋팅, MPICH 설정 및 HPL BMT 성능 측정.</li>
-							<li>고등과학원 quad core HPC 클러스터 64대 계산용/파일 I/O 네트워크 분리 설계 기술 지원.</li>
-						</ul>
+					<!-- Project 2 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">삼바 서버 구축 (webdisk로 사용)</h4>
+						<div class="text-xs text-slate-400">Samba, IntegraTUM WebDisk, Storage Virtualization</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> samba를 web disk로 활용할 방법 연구 및 구성.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>Samba 서버 구축 및 설정.</li>
+								<li>IntegraTUM WebDisk를 활용하여 Samba를 웹 디스크로 연동.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>Samba 기반의 웹 디스크 서비스 제공 및 파일 공유/접근 편의성 향상.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 6. 아이키스텍 -->
+			<div class="relative pl-6 border-l-2 border-indigo-500/30 space-y-6">
+				<div class="absolute -left-1.5 top-1.5 w-3 h-3 rounded-full bg-indigo-500"></div>
+				<div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
+					<h3 class="text-xl font-bold text-white">아이키스텍</h3>
+					<span class="text-xs font-bold px-2 py-1 rounded bg-slate-900 border border-slate-800 text-indigo-400">2006.10 - 2008.09</span>
+				</div>
+				<p class="text-sm text-slate-400">클러스터 빌드 엔지니어 (정규직)</p>
+				
+				<div class="space-y-6 pt-2">
+					<!-- Project 1 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">고등과학원 HPC 리눅스 클러스터 64대 구축 및 유지보수</h4>
+						<div class="text-xs text-slate-400">HPC Cluster Build, Hardware Assembly, Computing Program Setup</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 계산용 서버를 위한 프로그램 조사와 설치.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>서버 조립 및 랜케이블 제작.</li>
+								<li>계산용 프로그램 조사 및 설치.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>HPC 리눅스 클러스터 인프라 구축에 기여.</li>
+								<li>서버 하드웨어 및 네트워크 구성에 대한 이해 증진.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 2 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">배재대학교 HPC 리눅스 클러스터 20대 구축 및 유지보수</h4>
+						<div class="text-xs text-slate-400">Linux OS Installation, Ganglia Monitoring, HPL Benchmark</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 모니터링 프로그램(ganglia)과 hpl로 benchmark 보고서 필요. 클러스터에 필요한 OS 설치 및 OS 셋팅.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>클러스터 OS 설치 및 설정.</li>
+								<li>Ganglia 모니터링 프로그램 설치.</li>
+								<li>HPL 벤치마크 수행 및 보고서 작성.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>HPC 클러스터 운영 및 성능 벤치마크 역량 습득.</li>
+								<li>모니터링 시스템 구축 경험 확보.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 3 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">인하대학교 리눅스 클러스터 구축 및 유지보수</h4>
+						<div class="text-xs text-slate-400">Linux OS Tuning, MPICH, Torque Scheduler, BMT Test</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 각종 tuning을 통해서 hpl 성능 향상. 리눅스 클러스터에 필요한 OS 설치 및 셋팅, 병렬프로그램에 필요한 mpich1, mpich2 설치 및 셋팅, 작업 스케줄러인 torque 셋팅, HPL을 이용한 BMT 수행.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>리눅스 클러스터 OS 설치 및 설정.</li>
+								<li>MPICH 설치 및 설정, Torque 스케줄러 셋팅.</li>
+								<li>HPL 벤치마크 테스트(BMT) 수행.</li>
+								<li>HPC 성능 향상을 위한 튜닝 작업 수행.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>HPC 클러스터 성능 최적화 및 튜닝 역량 강화.</li>
+								<li>병렬 프로그래밍 환경 설정 및 스케줄러 운영 경험.</li>
+								<li>고성능 컴퓨팅 시스템 구축 및 납품 완료.</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- Project 4 -->
+					<div class="glass p-6 rounded-2xl space-y-4">
+						<h4 class="text-lg font-bold text-white">고등과학원 quad core HPC 클러스터 64대 구축 및 유지보수</h4>
+						<div class="text-xs text-slate-400">Network Separation, File I/O Network, Stacking Switch</div>
+						<div class="space-y-2">
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> 계산용 네트워크와 파일 i/o 네트워크 분리. switch의 stacking을 연구하고 파일 i/o를 향상시키는 방법을 search.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
+								<li>HPC 클러스터 내 계산용 네트워크와 파일 I/O 네트워크 분리 설계 및 구현.</li>
+								<li>스위치 스태킹(Stacking) 기술 연구 및 적용.</li>
+								<li>파일 I/O 성능 향상 방안 연구.</li>
+							</ul>
+							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
+							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
+								<li>HPC 클러스터의 네트워크 및 파일 I/O 성능 대폭 향상.</li>
+								<li>안정적인 컴퓨팅 환경 구축 및 작업 속도 증대.</li>
+								<li>스토리지 및 백업 기술 역량 강화.</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
