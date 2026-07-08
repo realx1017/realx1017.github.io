@@ -67,13 +67,13 @@ import Layout from '../layouts/BlogPost.astro';
 						<h4 class="text-lg font-bold text-white">AWS Bedrock 및 Slack Interactivity 기반의 AI Ops 장애 분석 시스템 구축</h4>
 						<div class="text-xs text-slate-400">AWS Lambda, AWS Bedrock, Amazon SNS, CloudWatch Logs Insights, Slack App (Block Kit & Interactive API)</div>
 						<div class="space-y-2">
-							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> CloudWatch Alarm 발생 시 수동으로 수행하던 로그 분석 및 모니터링 작업을 자동화하여 장애 복구 시간(MTTR)을 단축하고, AWS Bedrock(Claude 3.5 Sonnet)과 슬랙 인터랙티브 기능을 결합한 완전 서버리스 AI Ops 환경을 구현하여 운영 효율 극대화.</p>
+							<p class="text-sm text-slate-300"><strong class="text-white">목표:</strong> CloudWatch Alarm 발생 시 수동으로 수행하던 로그 분석 및 모니터링 작업을 자동화하여 장애 복구 시간(MTTR)을 단축하고, AWS Bedrock과 슬랙 인터랙티브 기능을 결합한 완전 서버리스 AI Ops 환경을 구현하여 운영 효율 극대화.</p>
 							<p class="text-sm text-slate-300"><strong class="text-white">주요 활동 및 기여:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5">
 								<li>슬랙 인터랙티브 API의 3초 타임아웃 제한을 해결하기 위해, Lambda Function URL 수신부와 비동기 자가 호출(Self-Invocation) 엔진을 분리하여 안정적인 백그라운드 추론 파이프라인 구축.</li>
 								<li>ALB(Target Group 헬스), ECS(Task/CPU/Memory 사용량), RDS(커넥션/IOPS), DMS(CDC 지연), Lambda(에러/Throttles) 등 Namespace별 CloudWatch Logs Insights 쿼리 및 메트릭 수집 자동화.</li>
 								<li>장애 시점 30분 이내에 실행된 ECS 배포 및 재시작 이력을 필터링하여 인프라 변경 점과의 연관성을 정밀히 판별하는 알고리즘 개발.</li>
-								<li>Cross-Region Inference Profile(global.anthropic.claude-sonnet-4-6)을 연동하고, 장애 원인(Root Cause) 및 즉시 조치 단계를 1,500자 이내로 도출하는 시스템 프롬프트 엔지니어링 수행.</li>
+								<li>Cross-Region Inference Profile(global.anthropic.claude-sonnet-4-5)을 연동하고, 장애 원인(Root Cause) 및 즉시 조치 단계를 1,500자 이내로 도출하는 시스템 프롬프트 엔지니어링 수행.</li>
 							</ul>
 							<p class="text-sm text-slate-300"><strong class="text-white">성과:</strong></p>
 							<ul class="list-disc pl-5 text-xs text-slate-300 space-y-1">
