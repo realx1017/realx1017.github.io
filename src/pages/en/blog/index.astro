@@ -7,11 +7,13 @@ import FormattedDate from '../../../components/FormattedDate.astro';
 import Header from '../../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../../consts';
 
-const posts = (await getCollection('blog')).sort((a, b) => {
-	const aDate = a.data.pubDate || a.data.date || new Date();
-	const bDate = b.data.pubDate || b.data.date || new Date();
-	return bDate.valueOf() - aDate.valueOf();
-});
+const posts = (await getCollection('blog'))
+	.filter((post) => post.id.startsWith('en/'))
+	.sort((a, b) => {
+		const aDate = a.data.pubDate || a.data.date || new Date();
+		const bDate = b.data.pubDate || b.data.date || new Date();
+		return bDate.valueOf() - aDate.valueOf();
+	});
 ---
 
 <!doctype html>
@@ -42,7 +44,7 @@ const posts = (await getCollection('blog')).sort((a, b) => {
 									
 									return (
 										<li class={isFirst ? "md:col-span-2" : ""}>
-											<a href={`/en/blog/${post.id}/`} class="group block glass rounded-2xl overflow-hidden hover:scale-[1.01] hover:border-slate-800 transition-all duration-300">
+											<a href={`/en/blog/${post.id.replace('en/', '')}/`} class="group block glass rounded-2xl overflow-hidden hover:scale-[1.01] hover:border-slate-800 transition-all duration-300">
 												{post.data.heroImage ? (
 													<Image 
 														width={isFirst ? 960 : 720} 
