@@ -6,7 +6,7 @@ const { pathname } = Astro.url;
 const isEnglish = pathname.startsWith('/en');
 
 const homeUrl = isEnglish ? '/en' : '/';
-const blogUrl = '/blog'; // Keep blog shared for now
+const blogUrl = isEnglish ? '/en/blog' : '/blog';
 const aboutUrl = isEnglish ? '/en/about' : '/about';
 
 const langToggleUrl = isEnglish 
