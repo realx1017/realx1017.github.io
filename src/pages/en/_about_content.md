@@ -1,6 +1,4 @@
 # Jeong-Yeol Cho
-📞 +82 10-2871-9725  
-📧 realx1017@naver.com
 
 ---
 

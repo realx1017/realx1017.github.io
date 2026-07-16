@@ -7,6 +7,7 @@ import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 const posts = (await getCollection('blog'))
+	.filter((post) => post.id.startsWith('en/'))
 	.sort((a, b) => {
 		const aDate = a.data.pubDate || a.data.date || new Date();
 		const bDate = b.data.pubDate || b.data.date || new Date();
@@ -94,7 +95,7 @@ const posts = (await getCollection('blog'))
 			<div class="max-w-4xl mx-auto px-4">
 				<div class="flex items-center justify-between mb-10">
 					<h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Recent Articles</h2>
-					<a href="/blog" class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
+					<a href="/en/blog" class="text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
 						View All Articles &rarr;
 					</a>
 				</div>
@@ -103,7 +104,7 @@ const posts = (await getCollection('blog'))
 					{
 						posts.length > 0 ? (
 							posts.map((post) => (
-								<a href={`/blog/${post.id}/`} class="group block glass p-6 rounded-2xl hover:border-slate-800 transition-all duration-200">
+								<a href={`/en/blog/${post.id.replace('en/', '')}/`} class="group block glass p-6 rounded-2xl hover:border-slate-800 transition-all duration-200">
 									<div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
 										<h3 class="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">
 											{post.data.title}
